@@ -1,0 +1,45 @@
+﻿@model kutuphaneApp.Models.tb_kitap_odunc
+
+@{
+    ViewBag.Title = "Al";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h3>Kitabı teslim almak istediğinize emin misiniz?</h3>
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Isbn No
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tb_kitaplar.isbn_no)
+        </dd>
+
+        
+
+        <dt>
+           Uye
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tb_uyeler.ad_soyad)   @Html.DisplayFor(model => model.tb_uyeler.telefon)
+        </dd>
+
+       
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Al" class="btn btn-default" /> |
+            @Html.ActionLink("Geri Dön", "Index")
+        </div>
+    }
+</div>
