@@ -1,0 +1,89 @@
+﻿@model kutuphaneApp.Models.tb_kitaplar
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Session["id"] == null)
+{
+    Response.Redirect("/Giris");
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Kitap Ekle</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            Isbn No
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.isbn_no, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.isbn_no, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Ad
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.adi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.adi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Basım Yılı
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.basim_yili, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.basim_yili, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Sayfa Sayisi
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.sayfa_sayisi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.sayfa_sayisi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Yayın Evi
+            <div class="col-md-10">
+                @Html.DropDownList("yayin_evi_id", new SelectList(ViewBag.yayin, "Value", "Text"), "Yayin Evi Seçiniz", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.yayin_evi_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Yazar
+            <div class="col-md-10">
+                @Html.DropDownList("yazar_id", new SelectList(ViewBag.yazar, "Value", "Text"), "Yazar Seçiniz", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.yazar_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            Tür
+            <div class="col-md-10">
+                @Html.DropDownList("tur_id", new SelectList(ViewBag.tur, "Value", "Text"), "Tür Seçiniz", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.tur_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Ekle" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Geri Dön", "Index")
+</div>

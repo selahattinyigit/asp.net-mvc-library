@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@if (Session["id"] == null)
+{
+    Response.Redirect("/Giris");
+}
+
+
+<Div id="IcerikAlani">
+
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header card-header-warning card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">library_books</i>
+                            </div>
+                            <p class="card-category">Kitap</p>
+                            <h3 class="card-title">
+                                @ViewBag.kitap_sayisi
+
+                                <small>Adet</small>
+                            </h3>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header card-header-success card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">person</i>
+                            </div>
+                            <p class="card-category">Üye</p>
+                            <h3 class="card-title">
+                                @ViewBag.uye_sayisi
+                                <small>Kişi</small>
+                            </h3>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header card-header-danger card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">book</i>
+                            </div>
+                            <p class="card-category">Ödünç Verilen Kitap</p>
+                            <h3 class="card-title">
+                                @ViewBag.odunc_sayisi
+                                <small>Adet</small>
+                            </h3>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="@Url.Action("GrafikOlustur","Home")" />
+                </div>
+                <div class="col-md-4">
+                    <img src="@Url.Action("GrafikOlustur2","Home")" />
+                </div>
+                <div class="col-md-4">
+                    <img ID="dd" src="@Url.Action("GrafikOlustur3","Home")" />
+                </div>
+                <div class="col-md-4">
+                    <img src="@Url.Action("GrafikOlustur4","Home")" />
+                </div>
+                <div class="col-md-4">
+                    <img src="@Url.Action("GrafikOlustur5","Home")" />
+                </div>
+                <div class="col-md-4">
+                    <img src="@Url.Action("GrafikOlustur6","Home")" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</Div>
+@Html.ActionLink("Yazdır", "PrintAllReport")

@@ -1,0 +1,75 @@
+﻿@model kutuphaneApp.Models.tb_kitap_odunc
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Kitap Ödünç Ver</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+           Üye
+            <div class="col-md-10">
+                @Html.DropDownList("uye_id", new SelectList(ViewBag.uye, "Value", "Text"), "Uye Seçiniz", new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.uye_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+          Kitap
+            <div class="col-md-10">
+                @Html.DropDownList("kitap_id", new SelectList(ViewBag.kitap, "Value", "Text"), "Kitap Seçiniz", new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.kitap_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+    
+        <div class="form-group">
+           Süre
+            <div class="col-md-10">
+                @Html.DropDownList("sure",
+                 new List<SelectListItem> {
+                     new SelectListItem {
+                        Text="5 Gün",
+                        Value="5",
+                        // Selected = true, seçili olarak gelsin
+                        // Disabled = true  disable olarak gelsin istersek kullanıyoruz
+                     },
+                     new SelectListItem {
+                        Text="10 Gün",
+                        Value="10",
+
+                     },
+                      new SelectListItem {
+                        Text="15 Gün",
+                        Value="15",
+
+                     },
+                       new SelectListItem {
+                        Text="20 Gün",
+                        Value="20",
+
+                     },
+                 }, "Süre Seçiniz", new { @class = "form-control" })
+            </div>
+        </div>
+
+       
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Ödünç Ver" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
