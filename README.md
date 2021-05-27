@@ -3,8 +3,6 @@
 It is an offline library application written in asp.net mvc. Database ms sql server is used
 
 
-![1]( https://i.ibb.co/yXrhL6d/1.png)
-
  ![img]( https://i.ibb.co/1mLJYdB/ktp1.png)
 ![img]( https://i.ibb.co/C5Jq8Y8/ktp2.png)
 ![img]( https://i.ibb.co/B25twL4/ktp3.png)
